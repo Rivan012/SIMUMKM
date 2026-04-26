@@ -3,7 +3,7 @@
 namespace App\Providers;
 use App\Models\Sistem\WebConfig;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('routes/api.php'));
+
         if (\Schema::hasTable('web_configs') && WebConfig::count() == 0) {
             WebConfig::create([
                 'name' => 'SIMUMKM',

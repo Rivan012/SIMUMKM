@@ -7,9 +7,13 @@
     <title>{{$webConfig->name ?? ''}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('storage/'. $webConfig->logo ) }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . $webConfig->logo) }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
+    <link rel="stylesheet" href="{{asset('css/global.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -183,6 +187,42 @@
 
             document.getElementById('social_media').value = JSON.stringify(data);
         });
+    </script>
+    <div id="toast"
+        class="fixed bottom-6 right-6 z-[200] transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl text-sm font-medium">
+    </div>
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                showToast("{{ session('success') }}", 'success');
+            });
+        </script>
+
+    @endif
+    <script>
+        lucide.createIcons();
+
+
+        // Toast Helper
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+
+            toast.innerText = msg;
+
+            toast.className = "fixed bottom-6 right-6 z-[200] px-6 py-4 rounded-2xl shadow-2xl text-sm font-medium transition-all duration-300";
+
+            if (type === 'error') {
+                toast.classList.add('bg-rose-600', 'text-white');
+            } else {
+                toast.classList.add('bg-emerald-600', 'text-white');
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
     </script>
 </body>
 

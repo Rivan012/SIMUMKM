@@ -45,14 +45,15 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Judul (Tagline)</label>
-                    <input type="text" name="judul" value="Pusat Inkubasi UMKM Digital"
+                    <input type="text" name="judul" value="{{$webConfig->judul}}"
                         class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all text-sm">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Deskripsi
                         Website</label>
                     <textarea name="description" rows="3"
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all text-sm">SimUMKM adalah platform digital untuk memfasilitasi pendataan, promosi, dan pengembangan UMKM di seluruh wilayah secara terintegrasi.</textarea>
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all text-sm">{{$webConfig->description}}
+                    </textarea>
                 </div>
             </div>
         </div>
@@ -71,7 +72,7 @@
                         WhatsApp</label>
                     <div class="relative">
                         <i data-lucide="phone" class="absolute left-4 top-3.5 w-4 h-4 text-slate-400"></i>
-                        <input type="text" name="phone" value="+62 812-3456-7890"
+                        <input type="text" name="phone" value="{{$webConfig->phone}}"
                             class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none text-sm">
                     </div>
                 </div>
@@ -79,7 +80,7 @@
                     <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Alamat Lengkap
                         Kantor</label>
                     <textarea name="address" rows="4"
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none text-sm">Jl. Ekonomi Kreatif No. 45, Komplek Perkantoran Terpadu, Jakarta Selatan, 12345</textarea>
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none text-sm">{{$webConfig->address}}</textarea>
                 </div>
             </div>
         </div>
